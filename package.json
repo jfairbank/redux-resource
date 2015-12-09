@@ -12,6 +12,15 @@
     "clean": "rm -rf lib",
     "prepublish": "npm run clean && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jfairbank/redux-resource.git"
+  },
+  "keywords": [
+    "redux",
+    "rest",
+    "resource"
+  ],
   "author": "Jeremy Fairbank <elpapapollo@gmail.com> (http://jeremyfairbank.com)",
   "license": "MIT",
   "devDependencies": {
