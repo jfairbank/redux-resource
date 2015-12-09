@@ -1,6 +1,11 @@
 # redux-resource
 
-Redux action creator for server resources
+Redux action creator for server resources. Warning: adding tests and ensuring
+this is a good API to work with, so this is currently in alpha!
+
+## Install
+
+    $ npm install redux-resource
 
 ## Example
 
