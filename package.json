@@ -2,9 +2,15 @@
   "name": "redux-resource",
   "version": "1.0.0-alpha.1",
   "description": "Action creators for resources",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir lib",
+    "clean": "rm -rf lib",
+    "prepublish": "npm run clean && npm run build"
   },
   "author": "Jeremy Fairbank <elpapapollo@gmail.com> (http://jeremyfairbank.com)",
   "license": "MIT",
