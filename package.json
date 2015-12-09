@@ -1,6 +1,6 @@
 {
   "name": "redux-resource",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Action creators for resources",
   "main": "lib/index.js",
   "files": [
