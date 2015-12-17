@@ -7,7 +7,9 @@ export default function parseUrl(url) {
     .map((paramId) => paramId.replace(':', ''));
 
   return (params) => {
-    const [pathParams, queryParams] = splitParams(params || {}, paramKeys);
+    const split = splitParams(params || {}, paramKeys);
+    const pathParams = split[0];
+    const queryParams = split[1];
 
     const finalUrl = statics.reduce((memo, piece, i) => {
       const paramKey = paramKeys[i] || '';
