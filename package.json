@@ -10,7 +10,8 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "clean": "rm -rf lib",
-    "prepublish": "npm run clean && npm run build"
+    "prepublish": "npm run clean && npm run build",
+    "test": "babel-tape-runner {test/tests/**/*Test.js,test/tests/*Test.js} | tnyan"
   },
   "repository": {
     "type": "git",
@@ -24,18 +25,29 @@
   "author": "Jeremy Fairbank <elpapapollo@gmail.com> (http://jeremyfairbank.com)",
   "license": "MIT",
   "dependencies": {
+    "pinkie-promise": "^2.0.0",
     "redux-thunk": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
+    "babel-plugin-syntax-async-functions": "^6.3.13",
     "babel-plugin-transform-export-extensions": "^6.3.13",
     "babel-plugin-transform-object-rest-spread": "^6.3.13",
+    "babel-plugin-transform-regenerator": "^6.3.18",
+    "babel-plugin-transform-runtime": "^6.3.13",
+    "babel-polyfill": "^6.3.14",
     "babel-preset-es2015": "^6.3.13",
+    "babel-runtime": "^6.3.13",
+    "babel-tape-runner": "^1.3.0",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
+    "jsdom": "^7.2.1",
     "lodash": "^3.10.1",
     "redux": "^3.0.4",
+    "sinon": "^1.17.2",
+    "tap-nyan": "0.0.2",
+    "tape": "^4.2.2",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   }
