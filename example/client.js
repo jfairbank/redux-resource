@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import { applyMiddleware, createStore } from 'redux';
 import { resourceMiddleware, createResourceAction } from '../src';
 
@@ -31,5 +32,7 @@ const fetchUser = createResourceAction(
   '/users/:id', 'FETCH_USER', 'RECEIVE_USER', 'ERR_RECEIVE_USER'
 );
 
-store.dispatch(fetchUser({ id: 1 }))
-  .then(() => console.log(store.getState()));
+store.dispatch(fetchUser({ id: 1 })).then(() => {
+  document.getElementById('main').innerHTML =
+    JSON.stringify(store.getState(), null, '  ');
+});
