@@ -16,7 +16,7 @@ export default function createResourceAction(
     options = {};
   } else {
     rawUrl = options.url;
-    options = omit(options, 'url');
+    options = omit(options, ['url']);
   }
 
   if (!rawUrl) {
