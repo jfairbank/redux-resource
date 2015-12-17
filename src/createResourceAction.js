@@ -1,6 +1,7 @@
 import fetchResource from './helpers/fetchResource';
 import omit from './helpers/omit';
 import parseUrl from './helpers/parseUrl';
+import assign from './helpers/assign';
 
 const DEFAULTS = {
   method: 'GET'
@@ -24,7 +25,7 @@ export default function createResourceAction(
   }
 
   urlCompiler = parseUrl(rawUrl);
-  options = { ...DEFAULTS, ...options };
+  options = assign({}, DEFAULTS, options);
 
   const resourceSendAction = () => ({ type: sendType });
 
@@ -43,7 +44,7 @@ export default function createResourceAction(
 
     dispatch(resourceSendAction());
 
-    return fetchResource(url, { ...options, data }).then(
+    return fetchResource(url, assign({}, options, { data })).then(
       resource => dispatch(resourceSuccessAction(resource)),
       error => dispatch(resourceErrorAction(error))
     );
