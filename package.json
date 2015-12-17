@@ -1,7 +1,7 @@
 {
   "name": "redux-resource",
-  "version": "1.0.0-alpha.3",
-  "description": "Action creators for resources",
+  "version": "1.0.0",
+  "description": "Easily create redux actions for managing server resources",
   "main": "lib/index.js",
   "files": [
     "src",
