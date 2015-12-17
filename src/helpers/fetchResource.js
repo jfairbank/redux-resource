@@ -1,3 +1,4 @@
+import Promise from 'pinkie-promise';
 import tryResult from './tryResult';
 
 export default function fetchResource(url, options) {
