@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import '../support/jsdom';
 import tapeTest from 'tape';
 import sinon from 'sinon';
