@@ -1,5 +1,7 @@
 # redux-resource
 
+[![Circle CI](https://circleci.com/gh/jfairbank/redux-resource.svg?style=svg)](https://circleci.com/gh/jfairbank/redux-resource)
+
 Easily create actions for managing server resources like fetching, creating, or
 updating. Provide action types used in your reducer function for updating your
 redux store based on results from the server.
