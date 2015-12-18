@@ -8,12 +8,35 @@ const fetchUser = createResourceAction(
   '/users/:id', 'FETCH_USER', 'RECEIVE_USER', 'ERR_RECEIVE_USER'
 );
 
+const createUser = createResourceAction(
+  { url: '/users/create', method: 'POST' },
+  'CREATE_USER', 'CREATED_USER', 'ERR_CREATING_USER'
+);
+
 const params = { id: 1 };
 
-test('making a request', (t, dispatch, getRequests) => {
+test('making a request with the default verb', (t, dispatch, getRequests) => {
   fetchUser(params)(dispatch);
 
-  t.equals(getRequests().length, 1);
+  const requests = getRequests();
+  const [req] = requests;
+
+  t.equal(requests.length, 1, 'made the request');
+  t.equal(req.url, `/users/${params.id}`, 'hit correct url');
+  t.equal(req.method, 'GET', 'made a GET request');
+
+  t.end();
+});
+
+test('making a request with an explicit verb', (t, dispatch, getRequests) => {
+  createUser()(dispatch);
+
+  const requests = getRequests();
+  const [req] = requests;
+
+  t.equal(requests.length, 1, 'made the request');
+  t.equal(req.url, '/users/create', 'hit correct url');
+  t.equal(req.method, 'POST', 'made a POST request');
 
   t.end();
 });
@@ -73,6 +96,18 @@ test('dispatching an error upon failure', async (t, dispatch, getRequests) => {
     dispatch.calledWith({ type: 'ERR_RECEIVE_USER', payload: error }),
     'receives error'
   );
+
+  t.end();
+});
+
+test('sending request body data', (t, dispatch, getRequests) => {
+  const data = { name: 'Jeremy' };
+
+  createUser(null, data)(dispatch);
+
+  const [req] = getRequests();
+
+  t.deepEqual(JSON.parse(req.requestBody), data, 'called with request body');
 
   t.end();
 });
