@@ -30,8 +30,14 @@ When calling the action, pass in any parameters to fill in the placeholders or
 add additional search query parameters.
 
 ```js
-fetchTodo({ id: 42 });                  // hits url '/todos/42'
-fetchTodo({ id: 1, extraParam: 'hi' }); // hits url '/todos/42?extraParam=hi'
+// make request to '/todos/42'
+store.dispatch(fetchTodo({ id: 42 }));
+
+// make request to '/todos/42?extraParam=hi'
+store.dispatch(fetchTodo({
+  id: 1,
+  extraParam: 'hi'
+}));
 ```
 
 `createResourceAction` defaults to `GET` requests. To use other verbs swap out
@@ -48,8 +54,10 @@ In addition to taking parameters, the action takes request JSON data. You can
 pass in `null` for params if you don't have any.
 
 ```js
-// hits url '/todos/add' with JSON data 'title="Finish tests"'
-addTodo(null, { title: 'Finish tests' });
+// make request to '/todos/add' with JSON data 'title="Finish tests"'
+store.dispatch(
+  addTodo(null, { title: 'Finish tests' })
+);
 ```
 
 Actions return a thunk (an anonymous function). To use the actions with your
@@ -64,7 +72,7 @@ import { resourceMiddleware } from 'redux-resource';
 import myReducer from './myReducer';
 
 const createStoreWithMiddleWare = applyMiddleware(resourceMiddleware)(createStore);
-const store = createStoreWithMiddleWare(reducer);
+const store = createStoreWithMiddleWare(myReducer);
 ```
 
 Make sure to add the action types to your reducer function!
