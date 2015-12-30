@@ -1,5 +1,5 @@
 {
-  "presets": ["es2015"],
+  "presets": ["es2015", "react"],
   "plugins": [
     "syntax-async-functions",
     "transform-export-extensions",
