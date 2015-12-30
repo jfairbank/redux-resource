@@ -50,13 +50,35 @@ const addTodo = createResourceAction(
 );
 ```
 
-In addition to taking parameters, the action takes request JSON data. You can
+You can also supply headers inside the object literal. This is useful if your
+request content type needs to be something other than `application/json`.
+
+```js
+const resource = {
+  url: '/todos/add',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
+};
+
+const addTodoFromForm = createResourceAction(
+  resource, 'ADD_TODO', 'ADDED_TODO', 'ERR_ADDING_TODO'
+);
+```
+
+In addition to taking parameters, the action can take request data. You can
 pass in `null` for params if you don't have any.
 
 ```js
-// make request to '/todos/add' with JSON data 'title="Finish tests"'
+// make request to '/todos/add' with JSON '{"title":"Finish tests"}'
 store.dispatch(
   addTodo(null, { title: 'Finish tests' })
+);
+
+// make request to '/todos/add' with form data 'title="Add%20more%20features"'
+store.dispatch(
+  addTodoFromForm(null, { title: 'Add more features' })
 );
 ```
 
@@ -124,7 +146,11 @@ store.dispatch(addTodo(null, { title: 'Finish tests' })).then(() => {
 
 ```js
 createResourceAction(
-  url: string | { url: string, method: string },
+  url: string | {
+    url: string,
+    [method: string],
+    [headers: Object]
+  },
   sendType: string,
   successType: string,
   errorType: string
