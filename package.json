@@ -11,8 +11,8 @@
     "build": "babel src --out-dir lib",
     "clean": "rm -rf lib",
     "prepublish": "npm run clean && npm run build",
-    "test": "NODE_PATH=NODE_PATH:. babel-tape-runner 'test/tests/**/*Test.js'",
-    "dev:test": "NODE_PATH=NODE_PATH:. babel-tape-runner 'test/tests/**/*Test.js' | tnyan"
+    "test": "NODE_PATH=NODE_PATH:. babel-tape-runner 'test/tests/**/*.test.js'",
+    "dev:test": "NODE_PATH=NODE_PATH:. babel-tape-runner 'test/tests/**/*.test.js' | tnyan"
   },
   "repository": {
     "type": "git",
