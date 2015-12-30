@@ -3,10 +3,6 @@ import omit from './helpers/omit';
 import parseUrl from './helpers/parseUrl';
 import assign from './helpers/assign';
 
-const DEFAULTS = {
-  method: 'GET'
-};
-
 export default function createResourceAction(
   options, sendType, successType, errorType
 ) {
@@ -25,7 +21,6 @@ export default function createResourceAction(
   }
 
   urlCompiler = parseUrl(rawUrl);
-  options = assign({}, DEFAULTS, options);
 
   const resourceSendAction = () => ({ type: sendType });
 

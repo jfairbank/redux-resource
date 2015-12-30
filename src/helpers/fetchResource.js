@@ -1,9 +1,16 @@
 import Promise from 'pinkie-promise';
 import tryResult from './tryResult';
+import assign from './assign';
 
-export default function fetchResource(url, options) {
+const DEFAULT_OPTIONS = {
+  method: 'GET'
+};
+
+export default function fetchResource(url, options = {}) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
+
+    options = assign({}, DEFAULT_OPTIONS, options);
 
     xhr.open(options.method, url);
     xhr.setRequestHeader('Content-Type', 'application/json');
