@@ -5,27 +5,29 @@ import Content from '../components/Content';
 import Input from '../components/Input';
 import * as actions from '../actions';
 
-export const App = ({
-  actions, fetchId, createName,
-  fetching, error, user
-}) => (
+export const App = ({ actions, fetching, error, user }) => (
   <div>
     <Content {...{fetching, error, user}}/>
 
     <Input
       placeholder="ID"
-      onUpdate={actions.updateFetchId}
-      onSubmit={() => actions.fetchUser({ id: fetchId })}
+      onSubmit={id => actions.fetchUser({ id })}
     >
       Fetch User
     </Input>
 
     <Input
       placeholder="Name"
-      onUpdate={actions.updateCreateName}
-      onSubmit={() => actions.createUser(null, { name: createName })}
+      onSubmit={name => actions.createUser(null, { name })}
     >
       Create User
+    </Input>
+
+    <Input
+      placeholder="Name"
+      onSubmit={name => actions.createUserFromForm(null, { name })}
+    >
+      Create User From Form
     </Input>
   </div>
 );

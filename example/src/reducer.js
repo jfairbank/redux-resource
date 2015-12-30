@@ -11,14 +11,10 @@ const match = (expression, matchers, defaultState) => {
 export const INITIAL_STATE = {
   fetching: false,
   user: null,
-  error: null,
-  fetchId: -1,
-  createName: ''
+  error: null
 };
 
 export default (state = INITIAL_STATE, action) => match(action.type, {
-  UPDATE_FETCH_ID:    () => ({ ...state, fetchId: action.payload }),
-  UPDATE_CREATE_NAME: () => ({ ...state, createName: action.payload }),
   FETCH_USER:         () => ({ ...state, fetching: true, error: null }),
   RECEIVE_USER:       () => ({ ...state, fetching: false, user: action.payload }),
   ERR_RECEIVE_USER:   () => ({ ...state, fetching: false, error: action.payload }),
