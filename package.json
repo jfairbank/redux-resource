@@ -12,7 +12,8 @@
     "clean": "rm -rf lib",
     "prepublish": "npm run clean && npm run build",
     "test": "NODE_PATH=NODE_PATH:. babel-tape-runner 'test/tests/**/*.test.js'",
-    "dev:test": "NODE_PATH=NODE_PATH:. babel-tape-runner 'test/tests/**/*.test.js' | tnyan"
+    "dev:test": "NODE_PATH=NODE_PATH:. babel-tape-runner 'test/tests/**/*.test.js' | tnyan",
+    "dev:test:watch": "nodemon -w src -w test --exec 'npm run dev:test'"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "express": "^4.13.3",
     "jsdom": "^7.2.1",
     "lodash": "^3.10.1",
+    "nodemon": "^1.8.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.6",
