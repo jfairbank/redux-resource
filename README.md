@@ -6,6 +6,12 @@ Easily create actions for managing server resources like fetching, creating, or
 updating. Provide action types used in your reducer function for updating your
 redux store based on results from the server.
 
+### \*\* DEPRECATED \*\*
+
+This package is no longer maintained. The redux-resource package name will be
+given to a different team managing a similar type of package for managing remote
+resources in Redux. More info to come soon.
+
 ## Install
 
     $ npm install redux-resource
